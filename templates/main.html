@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Management</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .upload-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .upload-form input[type="file"] {
+            display: none;
+        }
+
+        .upload-button {
+            padding: 10px 20px;
+            background-color: #008080;
+            color: #fff;
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .upload-button:hover {
+            background-color: #006666;
+        }
+
+        .names-container {
+            margin-top: 40px;
+            display: none;
+        }
+
+        .name {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .fade-in {
+            animation: fade-in 0.5s ease;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Attendance Management</h1>
+    <form class="upload-form" action="/recognize_faces" method="post" enctype="multipart/form-data">
+        <label for="file-upload" class="upload-button">Capture Photo</label>
+        <input id="file-upload" type="file" capture="camera" accept="image/*" name="file">
+        <input type="submit" class="upload-button" value="Submit">
+    </form>
+
+    <div id="names-container" class="names-container">
+        <h2>Attendance:</h2>
+        <div id="names"></div>
+    </div>
+
+    <script>
+        function displayNames(names) {
+            const namesContainer = document.getElementById("names-container");
+            const namesElement = document.getElementById("names");
+            namesElement.innerHTML = "";
+
+            const namesList = document.createElement("ul");
+            namesList.classList.add("name-list");
+
+            names.forEach((name) => {
+                const nameItem = document.createElement("li");
+                nameItem.textContent = name;
+                nameItem.classList.add("name");
+                namesList.appendChild(nameItem);
+            });
+
+            namesElement.appendChild(namesList);
+            namesContainer.style.display = "block";
+        }
+    </script>
+</body>
+
+</html>
