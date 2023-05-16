@@ -13,6 +13,7 @@ from sqlalchemy import create_engine, Column, Integer, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import datetime
+import uvicorn
 
 embedder = FaceNet()
 templates = Jinja2Templates(directory="templates")
@@ -182,6 +183,10 @@ async def recognize_faces(file: UploadFile = File(...)):
     os.remove(image_path)
 
     return {"names": names}
+
+
+if __name__ == "__main__":
+    uvicorn.run("main:app",port=8000)
 
 
 
