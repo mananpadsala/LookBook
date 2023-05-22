@@ -1,4 +1,4 @@
-**# LookBook**
+# LookBook
 
 **Attendance Management System with Face Detection using FaceNet and FastAPI**
 
