@@ -1,4 +1,5 @@
 **# LookBook**
+
 **Attendance Management System with Face Detection using FaceNet and FastAPI**
 
 This project presents an advanced Attendance Management System that leverages Face Detection technology, specifically the FaceNet one-shot algorithm, to automate the process of marking attendance based on group pictures. The system is built using FastAPI, a modern web framework for efficient development.
